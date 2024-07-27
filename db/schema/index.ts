@@ -1,0 +1,6 @@
+export { default as user, userRelations } from "./user"
+export { default as session, sessionRelations } from "./session"
+export { default as post, postRelations } from "./post"
+export { default as bookmark, bookmarksRelations} from "./bookmark"
+export { default as likes, likesRelations} from "./like"
+export { default as follows, followsUserRelations} from "./follows"
