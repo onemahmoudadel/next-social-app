@@ -21,7 +21,7 @@ export const followsUserRelations = relations( followsTable,( { one} )=> ({
 		references:[user.id],
 		relationName:"followers"
 	}),
-	Following: one(user,{
+	Followings: one(user,{
 		fields:[followsTable.followingUserId],
 		references:[user.id],
 		relationName:"followings"

@@ -42,11 +42,11 @@ export const userRelations = relations( userTable,( { many } )=> ({
   likes: many(likes),
   bookmarks: many(bookmark),
 
-	followers: many(follows,{
+	Followers: many(follows,{
 		relationName:"followers"
 	}),
-	followings: many(follows,{
-		relationName:"Followings"
+	Followings: many(follows,{
+		relationName:"followings"
 	}),
 }))
 export default userTable
