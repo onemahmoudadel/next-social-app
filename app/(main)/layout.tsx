@@ -10,7 +10,7 @@ const layout = async ({ children }: Readonly<{ children: React.ReactNode }>) => 
   return (
     <main className="flex h-screen">
       <Navbar user={user} />
-      <div className="w-full flex-1" >
+      <div className="w-full flex-1 overflow-y-scroll" >
         {children}
       </div>
     </main>
