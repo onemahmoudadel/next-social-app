@@ -90,7 +90,7 @@ const UserButton = ({user}:{user:User}) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="h-auto gap-2 w-full" variant="ghost">
+        <Button className="hidden sm:flex h-auto gap-2 w-full" variant="ghost">
           <Avatar className="size-8">
             <AvatarImage src="https://github.com/shadcn.png" />
             <AvatarFallback>{user.name.slice(0,2)}</AvatarFallback>
