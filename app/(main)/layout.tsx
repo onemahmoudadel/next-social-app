@@ -8,10 +8,12 @@ const layout = async ({ children }: Readonly<{ children: React.ReactNode }>) => 
 		return redirect("/login");
 	}
   return (
-    <main className="flex h-screen">
-      <Navbar user={user} />
-      <div className="w-full flex-1 overflow-y-scroll" >
-        {children}
+    <main className=" h-screen  w-full px-2.5 md:px-8 overflow-y-scroll">
+      <div className="max-w-screen-xl mx-auto flex">
+        <Navbar user={user} />
+        <div className="w-full flex-1" >
+          {children}
+        </div>
       </div>
     </main>
   )

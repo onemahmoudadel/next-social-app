@@ -26,7 +26,7 @@ import { logout } from "@/auth/action"
 const Navbar = ({user}:{user:User}) => {
   const pathname = usePathname()
   return (
-    <nav className='backdrop-blur bottom-0 fixed w-full sm:w-auto  border-t sm:border-none gap-1 flex-row flex sm:flex-col items-center sm:h-screen sm:sticky sm:top-0 p-2 bg-primary-foreground/70 sm:bg-primary-foreground justify-between sm:justify-start '>
+    <nav className='backdrop-blur bottom-0 fixed sm:sticky h-auto sm:h-screen sm:top-0  w-full sm:w-auto  border-t sm:border-none gap-1 flex-row flex sm:flex-col items-center p-2 bg-primary-foreground/70 sm:bg-primary-foreground justify-between sm:justify-start z-50'>
       
       <Link className="hidden sm:inline-flex w-full" href='/'>
           <h1 className="p-4 text-xl font-semibold tracking-tight">Social app</h1>
