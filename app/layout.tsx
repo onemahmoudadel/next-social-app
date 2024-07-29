@@ -10,6 +10,8 @@ const fontSans = FontSans({
 })
 
 import { Toaster } from "@/components/ui/sonner"
+import { QueryProvider } from "@/app/providers/QueryProvider";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 export const metadata: Metadata = {
   title: {
@@ -28,9 +30,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("min-h-screen bg-background font-sans antialiased",fontSans.variable)}>
-        
-        {children}
-        <Toaster richColors position="bottom-right" />
+        <QueryProvider>
+          {children}
+          <Toaster richColors position="bottom-right" />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryProvider>
       </body>
     </html>
   );

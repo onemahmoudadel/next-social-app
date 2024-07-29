@@ -10,7 +10,8 @@ export const postTable = pgTable("post", {
 		.notNull().references(()=>user.id,{onDelete:"cascade"}),
 		text: text("text").notNull(),
 		createdAt: timestamp("created_at").defaultNow().notNull(),
-		updatedAt: timestamp("updated_at").defaultNow().notNull()
+		updatedAt: timestamp("updated_at").defaultNow().notNull(),
+		image:text("image"),
 	},(t) => {
   return {
     PostUserIdx: index('post_user_idx').on(t.userId),

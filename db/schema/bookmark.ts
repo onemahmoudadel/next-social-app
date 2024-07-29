@@ -9,10 +9,10 @@ export const bookmarkTable = pgTable(
   {
     userId: text("user_id")
       .notNull()
-      .references(() => user.id),
+      .references(() => user.id,{onDelete:"cascade"}),
     postId: uuid("post_id")
       .notNull()
-      .references(() => post.id),
+      .references(() => post.id,{onDelete:"cascade"}),
     created_at: timestamp("created_at").defaultNow().notNull(),
   },
   (table) => ({
