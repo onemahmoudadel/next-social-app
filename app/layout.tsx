@@ -12,8 +12,9 @@ const fontSans = FontSans({
 import { Toaster } from "@/components/ui/sonner"
 import { QueryProvider } from "@/app/providers/QueryProvider";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { SessionProvider } from "./providers/SessionProvider";
+import { SessionProvider } from "@/app/providers/SessionProvider";
 import { validateRequest } from "@/auth";
+import { ThemeProvider } from "@/app/providers/ThemeProvider"
 
 export const metadata: Metadata = {
   title: {
@@ -31,15 +32,22 @@ export default async function RootLayout({
 }>) {
   const sessionData = await validateRequest()
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={cn("min-h-screen bg-background font-sans antialiased",fontSans.variable)}>
-        <SessionProvider value={sessionData}>
-          <QueryProvider>
-            {children}
-            <Toaster richColors position="bottom-right" />
-            <ReactQueryDevtools initialIsOpen={false} />
-          </QueryProvider>
-        </SessionProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <SessionProvider value={sessionData}>
+            <QueryProvider>
+              {children}
+              <Toaster richColors position="bottom-right" />
+              <ReactQueryDevtools initialIsOpen={false} />
+            </QueryProvider>
+          </SessionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
