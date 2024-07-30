@@ -7,21 +7,8 @@ import { cn } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { User } from "lucia"
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { logout } from "@/auth/action"
+
+import UserButton from "@/components/UserButton"
 
 const Navbar = ({user}:{user:User}) => {
   const pathname = usePathname()
@@ -86,42 +73,3 @@ const Navbar = ({user}:{user:User}) => {
 }
 export default Navbar
 
-const UserButton = ({user}:{user:User}) => {
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button className="hidden sm:flex h-auto gap-2 w-full" variant="ghost">
-          <Avatar className="size-8">
-            <AvatarImage src="https://github.com/shadcn.png" />
-            <AvatarFallback>{user.name.slice(0,2)}</AvatarFallback>
-          </Avatar>
-          <div className="flex flex-col">
-            <h3 className="">{user.name}</h3> 
-            <span className="text-sm text-muted-foreground">@{user.username}</span> 
-          </div>
-        </Button>
-        </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-44 mx-4" >
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          <DropdownMenuItem asChild>
-            <Link href={`/u/${user.username}`}>
-            Profile
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link href="/settings">
-              Settings
-            </Link>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={async ()=> await logout()} className="focus:text-destructive-foreground focus:bg-destructive/90">
-            Log out
-            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
-}
