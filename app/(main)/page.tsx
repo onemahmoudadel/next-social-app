@@ -13,7 +13,7 @@ export default function Page() {
         <Feed />
       </PrefetchProvider>
 
-      <div className="hidden lg:block h-screen sticky top-0 w-1/3 min-w-72 max-w-80 p-4 bg-green-200">
+      <div className="hidden lg:block h-screen sticky top-0  max-w-96 p-4 bg-green-200">
       <ScrollArea className="h-screen px-4 border rounded-sm bg-white">
         Suggested people
         <ul className='space-y-4'>
