@@ -26,8 +26,10 @@ export async function GET() {
         userId:false,
         updatedAt:false,
       },
+      limit:100,
       orderBy: (posts, { desc }) => [desc(posts.createdAt)],
-    }),
+    }
+  ),
     db.query.likes.findMany(),
   ])
   const finalResult = posts.map((p) => {

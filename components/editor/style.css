@@ -1,0 +1,27 @@
+/* .tiptap p.is-editor-empty:first-child::before {
+  color: theme("colors.muted.foreground");
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+} */
+
+.tiptap p.is-editor-empty:first-child::before {
+  color: theme("colors.muted.foreground");
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+.tiptap.ProseMirror {
+  outline: none;
+  padding: 1rem;
+  border-radius: 4px;
+  border: 1.5px solid theme("colors.muted.DEFAULT");
+  background-color: theme("colors.muted.DEFAULT");
+}
+
+.tiptap.ProseMirror.ProseMirror-focused {
+  background-color: theme("colors.card.DEFAULT");
+  border: 1.5px solid theme("colors.secondary.foreground");
+}

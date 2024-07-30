@@ -1,6 +1,7 @@
 'use client'
 import PostCard from '@/components/PostCard'
 import { usePostQuery } from '@/features/post/queries'
+import { PostEditor } from '@/components/editor/PostEditor'
 
 export const Feed = () => {
   const {data,error,isError,isLoading} = usePostQuery()
@@ -9,8 +10,11 @@ export const Feed = () => {
     return <span>Error: {error.message}</span>
   }
   return (
-    <div className="min-h-screen border-x  flex-grow sm:mb-0 mb-16">
-      {data?.map(post=> <PostCard key={post.id} post={post}/>)}
-    </div>
+    <>
+      <div className="min-h-screen border-x  flex-grow sm:mb-0 mb-16">
+        <PostEditor />
+        {data?.map(post=> <PostCard key={post.id} post={post}/>)}
+      </div>
+    </>
   )
 }

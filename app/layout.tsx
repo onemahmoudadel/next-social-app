@@ -12,6 +12,8 @@ const fontSans = FontSans({
 import { Toaster } from "@/components/ui/sonner"
 import { QueryProvider } from "@/app/providers/QueryProvider";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { SessionProvider } from "./providers/SessionProvider";
+import { validateRequest } from "@/auth";
 
 export const metadata: Metadata = {
   title: {
@@ -22,19 +24,22 @@ export const metadata: Metadata = {
   // authors: [{ name: 'Seb' }, { name: 'Josh', url: 'https://nextjs.org' }],
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const sessionData = await validateRequest()
   return (
     <html lang="en">
       <body className={cn("min-h-screen bg-background font-sans antialiased",fontSans.variable)}>
-        <QueryProvider>
-          {children}
-          <Toaster richColors position="bottom-right" />
-          <ReactQueryDevtools initialIsOpen={false} />
-        </QueryProvider>
+        <SessionProvider value={sessionData}>
+          <QueryProvider>
+            {children}
+            <Toaster richColors position="bottom-right" />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </QueryProvider>
+        </SessionProvider>
       </body>
     </html>
   );

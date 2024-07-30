@@ -2,7 +2,7 @@ export interface PostResponse {
   error: string | null,
   data: Post[]
 }
-interface Post {
+export interface Post {
     LikesCount: number;
     hasLiked: boolean;
     image: string | null;

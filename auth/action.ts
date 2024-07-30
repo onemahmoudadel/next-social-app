@@ -4,7 +4,6 @@ import db from "@/db";
 import { user } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { generateIdFromEntropySize } from "lucia";
-import { z } from "zod";
 import { hash } from "@node-rs/argon2";
 import { lucia, validateRequest } from ".";
 import { cookies } from "next/headers";

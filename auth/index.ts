@@ -18,6 +18,8 @@ export const lucia = new Lucia(adapter, {
 			// attributes has the type of DatabaseUserAttributes
 			name: attributes.name,
 			username: attributes.username,
+			avatarUrl: attributes.avatarUrl,
+			id: attributes.id,
 		};
 	}
 });
@@ -30,10 +32,14 @@ declare module "lucia" {
 }
 
 interface DatabaseUserAttributes {
-	username: string;
+	id: string;
 	name: string;
+	bio: string | null;
+	coverImage: string | null;
+	createdAt: Date | null;
+	username: string;
+	avatarUrl: string | null;
 }
-
 
 export const validateRequest = cache(
 	async (): Promise<{ user: User; session: Session } | { user: null; session: null }> => {
