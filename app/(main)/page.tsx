@@ -1,4 +1,3 @@
-import React from 'react'
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Feed } from './Feed'
 import { getPrefetchQueryOptions } from '@/features/post/prefetch'
@@ -9,9 +8,9 @@ export default function Page() {
 
   return (
     <div className='flex '>
-      <PrefetchProvider queryFn={prefetchQueryFn} queryKey={queryKey}  >
+      {/* <PrefetchProvider queryFn={prefetchQueryFn} queryKey={queryKey}  > */}
         <Feed />
-      </PrefetchProvider>
+      {/* </PrefetchProvider> */}
 
       <div className="hidden lg:block h-screen sticky top-0  max-w-96 p-4 bg-green-200">
       <ScrollArea className="h-screen px-4 border rounded-sm bg-white">
