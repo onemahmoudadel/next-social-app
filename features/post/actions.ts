@@ -2,9 +2,9 @@
 
 import { validateRequest } from "@/auth";
 import db from "@/db";
-import { post, user } from "@/db/schema";
+import { likes, post, user } from "@/db/schema";
 import { sleep } from "@/lib/utils";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 
 export async function createPost({text}:{text:string}) {
 
@@ -40,4 +40,37 @@ export async function createPost({text}:{text:string}) {
       username:createdBy?.username,
     },
   }
+}
+export async function likePost({postId}:{postId:string}) {
+
+  const { session } = await validateRequest()
+
+  if(!session) {
+    throw new Error("Unauthorized")
+  }
+
+  const [result] =  await db.insert(likes).values({
+    postId,
+    userId:session.userId
+  }).returning()
+  sleep(2000)
+
+  return result
+
+}
+export async function unLikePost({postId}:{postId:string}) {
+
+  const { session } = await validateRequest()
+
+  if(!session) {
+    throw new Error("Unauthorized")
+  }
+
+  const [result] =  await db.delete(likes)
+  .where(and(
+    eq(likes.userId,session.userId ),
+    eq(likes.postId,postId )))
+  .returning();
+    sleep(2000)
+  return result
 }
